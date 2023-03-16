@@ -44,7 +44,7 @@ button_search.addEventListener("click", async function (event) {
 	}
 
 	const octokit = new Octokit({
-		auth: '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'
+		auth: 'Your_tokin'
 	});
 
 	const queryString = await octokit.request('GET /search/repositories', {
