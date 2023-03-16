@@ -18,7 +18,7 @@ button_search.addEventListener("click", async function (event) {
 
 	let valueSearch = document.querySelector("#search_repository").value;
 
-	if (valueSearch.length < 3) {
+	if (valueSearch.trim().length < 3 || valueSearch.search(/ /) == 0) {
 		if (document.querySelector(".search__err")) {
 			document.querySelector(".search__err").remove();
 		}
@@ -48,7 +48,7 @@ button_search.addEventListener("click", async function (event) {
 	});
 
 	const queryString = await octokit.request('GET /search/repositories', {
-		q: valueSearch
+		q: valueSearch + ' in:name'
 	});
 	try {
 		for (let i = 0; i < 10; i++) {
